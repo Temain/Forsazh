@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="display: none" data-bind="visible: true">
+    <div class="wrapper container-fluid">
+        <div class="row">
+            <div class="sidebar-wrapper">
+                <div class="sidebar">
+                    @*<header>
+                            <a class="brand" href="/">ОАО АТМ-Кубань</a>
+                            @Html.Partial("_LoginPartial")
+                        </header>*@
+
+                    <div class="user-img">
+                        <img src="@Url.Content("~/Content/images/user.png")" class="circle">
+                    </div>
+
+                    <img class="trenner" src="~/Content/images/trenner.png">
+
+                    <div class="list-group">
+                        <a class="list-group-item sale active" href="#" data-bind="click: navigateToSale">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Продажи</div>
+                        </a>
+                        <img class="trenner" src="~/Content/images/trenner.png">
+                        <a class="list-group-item product" href="#" data-bind="click: navigateToProduct">
+                            <i class="fa fa-barcode" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Товары</div>
+                        </a>
+                        <img class="trenner" src="~/Content/images/trenner.png">
+                        <a class="list-group-item client" href="#" data-bind="click: navigateToClient">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Покупатели</div>
+                        </a>
+                        <img class="trenner" src="~/Content/images/trenner.png">
+                        <a class="list-group-item employee" href="#" data-bind="click: navigateToEmployee">
+                            <i class="fa fa-sitemap" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Сотрудники</div>
+                        </a>
+                        <img class="trenner" src="~/Content/images/trenner.png">
+                        <a class="list-group-item report" href="#" data-bind="click: navigateToReport">
+                            <i class="fa fa-line-chart" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Отчёты</div>
+                        </a>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a class="list-group-item logout" href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">
+                                <i class="glyphicon glyphicon-off"></i>
+                                <div class="list-group-item-text">Выйти</div>
+                            </a>
+
+                            using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()                               
+                            }
+                        }                       
+                    </div>
+                </div>
+            </div>
+            <div class="main-wrapper pull-right">
+                <div class="main">
+                    <nav class="nav-top">
+                        <div class="left-part">
+                            <button type="button" class="btn back btn-primary btn-circle"><i class="glyphicon glyphicon-repeat mirror"></i></button>
+                            <ol class="breadcrumb">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Library</a></li>
+                                <li class="active">Data</li>
+                            </ol>
+                        </div>
+                        <div class="right-part">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>
+                            <span>Автосервис Форсаж</span>
+                        </div>
+                    </nav>
+                    <div class="main-tab">
+                        @RenderBody()
+                        @RenderSection("SPAViews", required: false)
+
+                        @*<!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Продажи <span class="badge">14</span></a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div class="tab-content-wrapper">
+                                    @RenderBody()
+                                    @RenderSection("SPAViews", required: false)
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/highcharts")
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
