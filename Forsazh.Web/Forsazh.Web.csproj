@@ -478,7 +478,7 @@
     <Content Include="Fonts\blisspro-regular-webfont.ttf" />
     <Content Include="Fonts\blisspro-regular-webfont.woff" />
     <Content Include="Content\bootstrap-select.css.map" />
-    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\myAsp.pubxml" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap3-typeahead.js" />

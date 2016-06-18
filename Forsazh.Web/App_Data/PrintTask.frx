@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="06/18/2016 16:56:47" ReportInfo.Modified="06/18/2016 17:29:24" ReportInfo.CreatorVersion="2015.1.4.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/18/2016 16:56:47" ReportInfo.Modified="06/18/2016 17:51:11" ReportInfo.CreatorVersion="2015.1.4.0">
   <Dictionary/>
   <ReportPage Name="Page1">
     <PageHeaderBand Name="PageHeader1" Width="718.2"/>
@@ -14,7 +14,7 @@
       <TextObject Name="Text12" Left="28.35" Top="302.4" Width="226.8" Height="28.35" Text="Исполнитель:" Font="Times New Roman, 18pt"/>
       <TextObject Name="Text14" Left="359.1" Top="255.15" Width="311.85" Height="28.35" Text="[Table.CrashTypeName]" Font="Times New Roman, 18pt"/>
       <TextObject Name="Text15" Left="359.1" Top="302.4" Width="311.85" Height="28.35" Text="[Table.EmployeeName]" Font="Times New Roman, 18pt"/>
-      <TextObject Name="Text1" Left="-37.8" Top="37.8" Width="718.2" Height="56.7" Text="Заяка №[Table.TaskId]" HorzAlign="Center" Font="Times New Roman, 24pt, style=Bold"/>
+      <TextObject Name="Text1" Top="37.8" Width="718.2" Height="56.7" Text="Заяка №[Table.TaskId]" HorzAlign="Center" Font="Times New Roman, 24pt, style=Bold"/>
       <TextObject Name="Text4" Left="576.45" Top="9.45" Width="141.75" Height="18.9" Text="Автосервис &quot;Форсаж&quot;" HorzAlign="Right" Font="Times New Roman, 10pt"/>
     </DataBand>
     <PageFooterBand Name="PageFooter1" Top="375.45" Width="718.2" Height="47.25">

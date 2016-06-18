@@ -7637,3 +7637,15 @@ h6 {
 .form-horizontal {
   padding-bottom: 200px;
 }
+.heading.brand {
+  float: left;
+  display: inline-block;
+  margin-top: 40px;
+  margin-right: 30px;
+}
+.heading.brand i {
+  font-size: 5em;
+}
+.heading.brand span {
+  font-size: 56px;
+}

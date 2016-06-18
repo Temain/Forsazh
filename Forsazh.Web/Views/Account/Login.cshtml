@@ -10,57 +10,67 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <title>@ViewBag.Title</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="wrapper container">
-        <header>
-            <a class="brand" href="/">ОАО АТМ-Кубань</a>
-            @*@Html.Partial("_LoginPartial")*@
-        </header>
-        <div class="heading">
-            <h2>@ViewBag.Title</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-18 col-md-offset-3">
+            <div class="heading brand">
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+                <span>Автосервис Форсаж</span>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-24">
-                <section id="loginForm">
-                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    </div>
+    <div class="row">
+        <div class="col-md-18 col-md-offset-3">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="page-header">
+                        <h1>
+                            Вход <small>Введите логин и пароль</small>
+                        </h1>
+                    </div>
+
+                    if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
                     {
-                        @Html.AntiForgeryToken()
-                        <h4>Введите имя пользователя и пароль.</h4>
-                        <hr />
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                            </div>
+                        <div class="alert alert-danger" role="alert">@Html.ValidationSummary(true)</div>
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new {@class = "col-md-6 control-label"})
+                        <div class="col-md-18">
+                            @Html.TextBoxFor(m => m.Email, "Логин", new {@class = "form-control"})
+                            @Html.ValidationMessageFor(m => m.Email, "", new {@class = "text-danger"})
                         </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new {@class = "col-md-6 control-label"})
+                        <div class="col-md-18">
+                            @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
+                            @Html.ValidationMessageFor(m => m.Password, "", new {@class = "text-danger"})
                         </div>
+                    </div>
                         @*<div class="form-group">
-                            <div class="col-md-offset-4 col-md-20">
+                            <div class="col-md-offset-6 col-md-18">
                                 <div class="checkbox">
                                     @Html.CheckBoxFor(m => m.RememberMe)
                                     @Html.LabelFor(m => m.RememberMe)
                                 </div>
                             </div>
                         </div>*@
-                        <div class="form-group">
-                            <div class="col-md-offset-4 col-md-10">
-                                <input type="submit" value="Выполнить вход" class="btn btn-primary" />
-                            </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-6 col-md-8">
+                            <button type="submit" value="Выполнить вход" class="btn btn-primary btn-lg full-width"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Войти</button>
                         </div>
+                    </div>
                         @*<p>
                             @Html.ActionLink("Регистрация нового пользователя", "Register")
                         </p>*@
@@ -68,16 +78,11 @@
                         <p>
                             @Html.ActionLink("Забыли пароль?", "ForgotPassword")
                         </p>*@
-                    }
-                </section>
-            </div>
-            @*<div class="col-md-4">
-                <section id="socialLoginForm">
-                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                </section>
-            </div>*@
+                }
+            </section>
         </div>
     </div>
+</div>
     <footer></footer>
 
     @Scripts.Render("~/bundles/jquery")
