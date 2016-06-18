@@ -1,0 +1,80 @@
+﻿<!-- ko with: createTask -->
+<div class="heading">
+    @*<a href="#" class="back-link" data-bind="click: $root.navigateToTask, tooltip: { title: 'Вернуться назад', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-arrow-circle-left"></i></a>*@
+    <div class="col-md-offset-2">
+        <h2>Добавление заявки</h2>
+    </div>
+</div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="clientName" class="col-sm-4 control-label">ФИО клиента</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="clientName" data-bind="value: clientName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="carModel" class="col-sm-4 control-label">Модель автомобиля</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="carModel" data-bind="value: carModel">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="carNumber" class="col-sm-4 control-label">Гос. номер</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="carNumber" data-bind="value: carNumber">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="crashType" class="col-sm-4 control-label">Вид работ</label>
+        <div class="col-sm-10">
+            <select id="crashType" class="form-control" data-bind="value: crashTypeId, options: crashTypes, optionsText: 'crashTypeName', optionsValue: 'crashTypeId', optionsCaption: ''"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sparePart" class="col-sm-4 control-label">Заменённые детали</label>
+        <div class="col-sm-10">
+            <select id="sparePart" class="form-control" data-bind="options: spareParts, selectedOptions: sparePartIds, optionsText: 'sparePartName', optionsValue: 'sparePartId'" size="5" multiple></select>
+            @*<select id="sparePart" class="form-control" multiple="" data-bind="selectPicker: sparePartIds, optionsText: 'text', optionsValue : 'id', value: sparePartIds, selectPickerOptions: { optionsArray: teamItems }"></select>*@
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="employee" class="col-sm-4 control-label">Исполнитель</label>
+        <div class="col-sm-10">
+            <select id="employee" class="form-control" data-bind="value: employeeId, options: employees, optionsText: 'employeeFullName', optionsValue: 'employeeId', optionsCaption: ''"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="totalCost" class="col-sm-4 control-label">Общая стоимость</label>
+        <div class="col-sm-10">
+            <div class='input-group'>
+                <input type='text' id='totalCost' class="form-control" data-bind="numeric : {}, value: totalCost" />
+                <span class="input-group-addon">
+                    <i class="" aria-hidden="true">руб.</i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="createdAt" class="col-sm-4 control-label">Дата заявки</label>
+        <div class="col-sm-10">
+            <div class='input-group date'>
+                <input type='text' id='createdAt' class="form-control" data-bind="datepicker: createdAt, datepickerOptions : { locale: 'ru', format: 'DD.MM.YYYY' }"/>
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="comment" class="col-sm-4 control-label">Комментарий</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="comment" data-bind="value: comment"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-10">
+            <button type="submit" class="btn btn-primary" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Сохранить</button>
+        </div>
+    </div>
+</form>
+<!-- /ko -->

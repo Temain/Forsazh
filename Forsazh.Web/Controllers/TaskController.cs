@@ -81,6 +81,10 @@ namespace SaleOfDetails.Web.Controllers
                 taskViewModel = Mapper.Map<Task, TaskViewModel>(task);
             }
 
+            var spareParts = UnitOfWork.Repository<SparePart>()
+                .Get(orderBy: o => o.OrderBy(p => p.SparePartName));
+            taskViewModel.SpareParts = Mapper.Map<IEnumerable<SparePart>, IEnumerable<SparePartViewModel>>(spareParts);
+
             var crashTypes = UnitOfWork.Repository<CrashType>()
                 .Get(orderBy: o => o.OrderBy(p => p.CrashTypeName));
             taskViewModel.CrashTypes = Mapper.Map<IEnumerable<CrashType>, IEnumerable<CrashTypeViewModel>>(crashTypes);
@@ -145,7 +149,10 @@ namespace SaleOfDetails.Web.Controllers
             }
 
             var task = Mapper.Map<TaskViewModel, Task>(viewModel);
-            task.CreatedAt = DateTime.Now;          
+            var spareParts = UnitOfWork.Repository<SparePart>()
+                .GetQ(x => viewModel.SparePartIds.Contains(x.SparePartId))
+                .ToList();
+            task.SpareParts = spareParts;   
 
             UnitOfWork.Repository<Task>().Insert(task);
             UnitOfWork.Save();

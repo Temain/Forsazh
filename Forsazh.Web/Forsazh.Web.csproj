@@ -76,6 +76,8 @@
       <HintPath>..\packages\EPPlus.4.0.5\lib\net20\EPPlus.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FastReport, Version=2015.1.4.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL" />
+    <Reference Include="FastReport.Web, Version=2015.1.4.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -310,6 +312,8 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
@@ -339,6 +343,8 @@
     <Content Include="Scripts\app\crashtype.viewmodel.js" />
     <Content Include="Scripts\app\employee.viewmodel.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -435,6 +441,7 @@
     <Content Include="Content\bootstrap\wells.less" />
     <Content Include="Content\styles.less" />
     <Content Include="Content\variables.less" />
+    <Content Include="App_Data\PrintTask.frx" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -470,9 +477,10 @@
     <Content Include="Fonts\blisspro-regular-webfont.eot" />
     <Content Include="Fonts\blisspro-regular-webfont.ttf" />
     <Content Include="Fonts\blisspro-regular-webfont.woff" />
+    <Content Include="Content\bootstrap-select.css.map" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <Content Include="Scripts\bootstrap-select.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\app\product.viewmodel.js" />
     <Content Include="Scripts\bootstrap3-typeahead.js" />
     <Content Include="Scripts\bootstrap3-typeahead.min.js" />
     <Content Include="Scripts\highcharts\adapters\standalone-framework.js" />
@@ -586,12 +594,10 @@
     <Content Include="Views\Home\_SparePart.cshtml" />
     <Content Include="Views\Home\_CreateSparePart.cshtml" />
     <Content Include="Views\Home\_EditSparePart.cshtml" />
-    <Content Include="Views\Home\_CreateSale.cshtml" />
-    <Content Include="Views\Home\_EditSale.cshtml" />
+    <Content Include="Views\Home\_CreateTask.cshtml" />
+    <Content Include="Views\Home\_EditTask.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Fonts\glyphicons-halflings-regular.ttf" />

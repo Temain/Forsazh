@@ -1,7 +1,6 @@
 ﻿/* Биндинги
 ------------------------------------------------------------*/
 ko.bindingHandlers.selectPicker = {
-    after: ['options'],
     init: function (element, valueAccessor, allBindingsAccessor) {
         if ($(element).is('select')) {
             if (ko.isObservable(valueAccessor())) {
@@ -13,8 +12,8 @@ ko.bindingHandlers.selectPicker = {
                     ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
                 }
             }
-
             $(element).addClass('selectpicker').selectpicker();
+            $(element).selectpicker('refresh');
         }
     },
     update: function (element, valueAccessor, allBindingsAccessor) {

@@ -34,14 +34,14 @@
                     <td data-bind="text: carModel()"></td>
                     <td data-bind="text: carNumber()"></td>
                     <td data-bind="text: crashTypeName()"></td>
-                    <td></td>
+                    <td data-bind="text: sparePartNames()"></td>
                     <td class="text-center" data-bind="text: totalCostView()"></td>
                     <td class="text-center" data-bind="text: createdAt() != null ? moment(createdAt()).format('DD.MM.YYYY') : ''"></td>
-                    <td data-bind="text: comment()"></td>
-                    <td data-bind="text: crashTypeName()"></td>
+                    <td class="text-center" data-bind="text: comment()"></td>
                     <td class="text-center actions">
                         <a href="#" class="btn btn-default btn-circle" data-bind="attr : { href: '/#task/' + taskId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
                         <a href="#" class="btn btn-default btn-circle" data-bind="click: $parent.removeTask, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
+                        <a href="#" target="_blank" class="btn btn-default btn-circle" data-bind="attr:{href:'/Report/PrintTask/?taskId='+taskId()}, tooltip: { title: 'Печать', placement: 'bottom', trigger: 'hover' }, click: function() { return true;}, clickBubble: false"><i class="fa fa-print"></i></a>
                     </td>
                 </tr>
             </tbody>

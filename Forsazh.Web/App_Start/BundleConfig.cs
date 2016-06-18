@@ -28,7 +28,6 @@ namespace SaleOfDetails.Web
                 "~/Scripts/app/app.datamodel.js",
                 "~/Scripts/app/app.viewmodel.js",
                 "~/Scripts/app/task.viewmodel.js",
-                "~/Scripts/app/product.viewmodel.js",
                 "~/Scripts/app/employee.viewmodel.js",
                 "~/Scripts/app/crashtype.viewmodel.js",
                 "~/Scripts/app/sparepart.viewmodel.js",
@@ -36,13 +35,14 @@ namespace SaleOfDetails.Web
                 "~/Scripts/app/_run.js",
                 "~/Scripts/bootstrap-datetimepicker.js",
                 "~/Scripts/bootstrap3-typeahead.min.js",
+                "~/Scripts/bootstrap-select.js",
                 "~/Scripts/alert.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/highcharts").Include(
-                       "~/Scripts/highcharts/highcharts.js",
-                       "~/Scripts/highcharts/highcharts-more.js",
-                       "~/Scripts/highcharts/modules/data.js",
-                       "~/Scripts/highcharts/modules/exporting.js"));
+                "~/Scripts/highcharts/highcharts.js",
+                "~/Scripts/highcharts/highcharts-more.js",
+                "~/Scripts/highcharts/modules/data.js",
+                "~/Scripts/highcharts/modules/exporting.js"));
 
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.
@@ -56,6 +56,7 @@ namespace SaleOfDetails.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/font-awesome.min.css",
                 "~/Content/bootstrap-datetimepicker.css",
+                "~/Content/bootstrap-select.css",
                 "~/Content/styles.css"));
         }
     }

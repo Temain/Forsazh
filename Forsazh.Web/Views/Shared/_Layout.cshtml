@@ -45,11 +45,11 @@
                             <i class="fa fa-archive" aria-hidden="true"></i>
                             <div class="list-group-item-text">Склад</div>
                         </a>
-                        @*<img class="trenner" src="~/Content/images/trenner.png">
+                        <img class="trenner" src="~/Content/images/trenner.png">
                         <a class="list-group-item report" href="#" data-bind="click: navigateToReport">
                             <i class="fa fa-pie-chart" aria-hidden="true"></i>
                             <div class="list-group-item-text">Отчёты</div>
-                        </a>*@
+                        </a>
 
                         @if (Request.IsAuthenticated)
                         {
@@ -93,6 +93,7 @@
     <footer></footer>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/highcharts")
     @RenderSection("Scripts", required: false)

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/18/2016 16:56:47" ReportInfo.Modified="06/18/2016 17:29:24" ReportInfo.CreatorVersion="2015.1.4.0">
+  <Dictionary/>
+  <ReportPage Name="Page1">
+    <PageHeaderBand Name="PageHeader1" Width="718.2"/>
+    <DataBand Name="Data1" Top="3.45" Width="718.2" Height="368.55">
+      <TextObject Name="Text2" Left="28.35" Top="113.4" Width="226.8" Height="28.35" Text="Ф.И.О. клиента:" Font="Times New Roman, 16pt"/>
+      <TextObject Name="Text3" Left="359.1" Top="113.4" Width="311.85" Height="28.35" Text="[Table.ClientName]" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text5" Left="28.35" Top="160.65" Width="226.8" Height="28.35" Text="Марка автомобиля:" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text6" Left="28.35" Top="207.9" Width="226.8" Height="28.35" Text="Гос.номер:" Font="Times New Roman, 16pt"/>
+      <TextObject Name="Text7" Left="359.1" Top="160.65" Width="311.85" Height="28.35" Text="[Table.CarModel]" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text8" Left="359.1" Top="207.9" Width="311.85" Height="28.35" Text="[Table.CarNumber]" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text11" Left="28.35" Top="255.15" Width="226.8" Height="28.35" Text="Вид работ:" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text12" Left="28.35" Top="302.4" Width="226.8" Height="28.35" Text="Исполнитель:" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text14" Left="359.1" Top="255.15" Width="311.85" Height="28.35" Text="[Table.CrashTypeName]" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text15" Left="359.1" Top="302.4" Width="311.85" Height="28.35" Text="[Table.EmployeeName]" Font="Times New Roman, 18pt"/>
+      <TextObject Name="Text1" Left="-37.8" Top="37.8" Width="718.2" Height="56.7" Text="Заяка №[Table.TaskId]" HorzAlign="Center" Font="Times New Roman, 24pt, style=Bold"/>
+      <TextObject Name="Text4" Left="576.45" Top="9.45" Width="141.75" Height="18.9" Text="Автосервис &quot;Форсаж&quot;" HorzAlign="Right" Font="Times New Roman, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="375.45" Width="718.2" Height="47.25">
+      <TextObject Name="Text9" Left="538.65" Top="9.45" Width="132.3" Height="18.9" Border.Lines="Bottom" HorzAlign="Center" Font="Times New Roman, 12pt"/>
+      <TextObject Name="Text10" Left="406.35" Top="9.45" Width="132.3" Height="18.9" Text="Подпись клиента" HorzAlign="Center" Font="Times New Roman, 12pt"/>
+      <TextObject Name="Text13" Left="28.35" Top="9.45" Width="160.65" Height="18.9" Text="[Table.CreatedAt]" Font="Times New Roman, 12pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

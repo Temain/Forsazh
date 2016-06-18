@@ -115,12 +115,14 @@ var EditTaskViewModel = function(app, dataModel) {
         }
 
         var postData = {
-            taskId : self.taskId(),
+            taskId: self.taskId(),
             clientName: self.clientName(),
+            carModel: self.carModel(),
             carNumber: self.carNumber(),
             crashTypeId: self.crashTypeId(),
             employeeId: self.employeeId(),
             createdAt: self.createdAt(),
+            sparePartIds: self.sparePartIds(),
             comment: self.comment()
         };
 
@@ -186,7 +188,10 @@ var CreateTaskViewModel = function (app, dataModel) {
     self.crashTypeId = ko.observable().extend({
         required: {
             params: true,
-            message: "Необходимо выбрать вид работы."
+            message: "Необходимо выбрать вид работы.",
+            onlyIf: function () {
+                return self.isValidationEnabled();
+            }
         }
     });
     self.crashTypes = ko.observable([]);
@@ -194,16 +199,21 @@ var CreateTaskViewModel = function (app, dataModel) {
     self.employeeId = ko.observable().extend({
         required: {
             params: true,
-            message: "Необходимо выбрать исполнителя."
+            message: "Необходимо выбрать исполнителя.",
+            onlyIf: function () {
+                return self.isValidationEnabled();
+            }
+
         }
     });
     self.employees = ko.observable([]);
-    self.spareParts = ko.observable([]);
+    self.sparePartIds = ko.observableArray([1]);
+    self.spareParts = ko.observableArray([]);
     self.comment = ko.observable();
     self.createdAt = ko.observable(moment());
 
     self.totalCost = ko.computed(function () {
-        return 0;// self.numberOfProducts() * self.productCost();
+        return 0// self.numberOfProducts() * self.productCost();
     }, this);
 
     self.save = function () {
@@ -215,12 +225,15 @@ var CreateTaskViewModel = function (app, dataModel) {
             return false;
         }
 
-        var postData = {
-            productId: self.productId(),
-            clientId: self.clientId(),
+        var postData = {            
+            clientName: self.clientName(),
+            carModel: self.carModel(),
+            carNumber: self.carNumber(),
+            crashTypeId: self.crashTypeId(),
             employeeId: self.employeeId(),
-            numberOfProducts: self.numberOfProducts(),
-            taskDate: self.taskDate()
+            createdAt: self.createdAt(),
+            sparePartIds: self.sparePartIds(),
+            comment: self.comment()
         };
 
         $.ajax({
@@ -235,11 +248,14 @@ var CreateTaskViewModel = function (app, dataModel) {
                 // showAlert('danger', 'Произошла ошибка при добавлении сотрудника. Обратитесь в службу технической поддержки.');
             },
             success: function (response) {
-                self.productId('');
-                self.clientId('');
+                self.clientName('');
+                self.carModel('');
+                self.carNumber('');
+                self.crashTypeId('');
                 self.employeeId('');
-                self.numberOfProducts('');
-                self.taskDate('');
+                self.createdAt('');
+                self.sparePartIds([]);
+                self.comment('');
 
                 result.showAllMessages(false);
 

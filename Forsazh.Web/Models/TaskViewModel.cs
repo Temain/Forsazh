@@ -25,15 +25,28 @@ namespace SaleOfDetails.Web.Models
         public string ClientName { get; set; }
 
         /// <summary>
+        /// Марка автомобиля
+        /// </summary>
+        public string CarModel { get; set; }
+
+        /// <summary>
+        /// Гос. номер
+        /// </summary>
+        public string CarNumber { get; set; }
+
+        /// <summary>
         /// Поломка, вид работ
         /// </summary>
         public int CrashTypeId { get; set; }
+        public string CrashTypeName { get; set; }
 
         public IEnumerable<CrashTypeViewModel> CrashTypes{ get; set; }
 
         /// <summary>
         /// Зап. части
         /// </summary>
+        public List<int> SparePartIds { get; set; } 
+        public List<string> SparePartNames { get; set; }
         public IEnumerable<SparePartViewModel> SpareParts { get; set; } 
 
         /// <summary>
@@ -55,14 +68,25 @@ namespace SaleOfDetails.Web.Models
         /// <summary>
         /// Дата заявки
         /// </summary>
-        public DateTime? TaskDate { get; set; }
+        public DateTime? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Комментарий
+        /// </summary>
+        public string Comment { get; set; }
+
+
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Task, TaskViewModel>("Task")
-                .ForMember(m => m.SpareParts, opt => opt.MapFrom(s => s.SpareParts))
+                .ForMember(m => m.SparePartIds, opt => opt.MapFrom(s => s.SpareParts.Select(x => x.SparePartId)))
+                .ForMember(m => m.SparePartNames, opt => opt.MapFrom(s => s.SpareParts.Select(x => x.SparePartName)))
                 .ForMember(m => m.EmployeeFullName, opt => opt.MapFrom(s => s.Employee.Person.FullName))
+                .ForMember(m => m.CrashTypeName, opt => opt.MapFrom(s => s.CrashType.CrashTypeName))
                 .ForMember(m => m.TotalCostView, opt => opt.MapFrom(s => s.CrashType.RepairCost + s.SpareParts.Sum(x => x.Cost)));
+
+            configuration.CreateMap<TaskViewModel, Task>("Task");
         }
     }
 

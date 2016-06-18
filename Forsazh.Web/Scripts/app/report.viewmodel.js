@@ -4,20 +4,22 @@
     Sammy(function () {
         this.get('#reports', function () {
             app.markLinkAsActive('report');
-            var year = 2016;
+            //var year = 2016;
 
-            $.ajax({
-                method: 'get',
-                url: '/api/Sale/ChartData/2016',
-                contentType: "application/json; charset=utf-8",
-                headers: {
-                    'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
-                },
-                success: function (response) {
-                    app.view(self);
-                    self.showChart(response);
-                }
-            });
+            //$.ajax({
+            //    method: 'get',
+            //    url: '/api/Sale/ChartData/2016',
+            //    contentType: "application/json; charset=utf-8",
+            //    headers: {
+            //        'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
+            //    },
+            //    success: function (response) {
+            //        app.view(self);
+            //        self.showChart(response);
+            //    }
+            //});
+
+            app.view(self);
         });
     });
 
