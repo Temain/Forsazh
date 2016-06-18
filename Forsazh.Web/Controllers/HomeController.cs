@@ -17,6 +17,8 @@ namespace SaleOfDetails.Web.Controllers
 
         public ActionResult Index()
         {
+            Logger.Info("Открытие главной страницы приложения.");
+
             return View();
         }
     }

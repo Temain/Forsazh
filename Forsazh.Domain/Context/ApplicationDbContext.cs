@@ -13,6 +13,7 @@ namespace SaleOfDetails.Domain.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<SparePart> SpareParts { get; set; }
         public DbSet<CrashType> CarCrashTypes { get; set; }
+        public DbSet<LogEntry> LogEntries { get; set; }
 
         public ApplicationDbContext()
             : base("ForsazhConnection", throwIfV1Schema: false)

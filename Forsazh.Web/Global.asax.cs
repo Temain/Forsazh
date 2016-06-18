@@ -6,8 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using ClassSchedule.Web.Controllers;
 using NLog;
+using SaleOfDetails.Web.Controllers;
 
 namespace SaleOfDetails.Web
 {
@@ -20,6 +20,7 @@ namespace SaleOfDetails.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            NLogConfig.Configure();
             AutoMapperConfig.Configure();
         }
 

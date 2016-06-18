@@ -83,8 +83,13 @@
     <Compile Include="Migrations\201606181628017_AddNullableStatusToTask.Designer.cs">
       <DependentUpon>201606181628017_AddNullableStatusToTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606181807563_AddLogEntry.cs" />
+    <Compile Include="Migrations\201606181807563_AddLogEntry.Designer.cs">
+      <DependentUpon>201606181807563_AddLogEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CrashType.cs" />
+    <Compile Include="Models\LogEntry.cs" />
     <Compile Include="Models\SparePart.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -108,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606181628017_AddNullableStatusToTask.resx">
       <DependentUpon>201606181628017_AddNullableStatusToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181807563_AddLogEntry.resx">
+      <DependentUpon>201606181807563_AddLogEntry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

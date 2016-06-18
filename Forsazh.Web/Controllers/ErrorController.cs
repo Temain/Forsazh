@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using SaleOfDetails.Web.Controllers;
 
-namespace ClassSchedule.Web.Controllers
+namespace SaleOfDetails.Web.Controllers
 {
     [Authorize]
     public class ErrorController : BaseController
