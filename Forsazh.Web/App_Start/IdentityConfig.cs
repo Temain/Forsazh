@@ -13,12 +13,13 @@ using Microsoft.Owin.Security;
 using SaleOfDetails.Domain.Context;
 using SaleOfDetails.Domain.Models;
 using SaleOfDetails.Web.Models;
+using Task = System.Threading.Tasks.Task;
 
 namespace SaleOfDetails.Web
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public System.Threading.Tasks.Task SendAsync(IdentityMessage message)
         {
             // Подключите здесь службу почты для отправки сообщения.
             return Task.FromResult(0);

@@ -1,7 +1,7 @@
-﻿<!-- ko with: product -->
+﻿<!-- ko with: sparePart -->
 <div class="heading">
-    <h2>Товары</h2>
-    <a class="create-link" href="/#product/create"><i class="fa fa-plus"></i> Добавить</a>
+    <h2>Склад</h2>
+    <a class="create-link btn btn-primary btn-circle" href="/#sparePart/create"><i class="fa fa-plus"></i></a>
 </div>
 <div class="row">
     <section class="col-md-24">
@@ -9,7 +9,7 @@
             <thead>
             <tr>
                 <th class="text-center">№</th>
-                <th>Название детали / спецтехники</th>
+                <th>Название детали</th>
                 <th class="text-center">Цена</th>
                 <th class="text-center">В наличии</th>
                 <th class="text-center">Действия</th>
@@ -18,12 +18,12 @@
             <tbody data-bind="foreach: list">
             <tr>
                 <td class="text-center" data-bind="text: ((($parent.selectedPage() - 1) * $parent.selectedPageSize()) + $index() + 1)"></td>
-                <td data-bind="text: productName()"></td>
+                <td data-bind="text: sparePartName()"></td>
                 <td class="text-center" data-bind="text: cost"></td>
                 <td class="text-center" data-bind="text: inStock"></td>
                 <td class="text-center actions">
-                    <a href="#" data-bind="attr : { href: '/#product/' + productId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
-                    <a href="#" data-bind="click: $parent.removeProduct, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
+                    <a href="#" class="btn btn-default btn-circle" data-bind="attr : { href: '/#sparePart/' + sparePartId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-default btn-circle" data-bind="click: $parent.removeSparePart, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
             </tbody>
@@ -33,7 +33,7 @@
         <div class="row text-center">
             <div class="col-md-6">
                 <form class="form-inline">
-                    <div class="form-group">
+                    <div class="form-group pull-left">
                         <label for="">Показывать записей: </label>
                         <select class="form-control" data-bind="options: pageSizes, value: selectedPageSize, event : { change: pageSizeChanged }"></select>
                     </div>
@@ -69,7 +69,7 @@
                 <form class="form-inline">
                     <div class="form-group pull-right">
                         <label for="">Найдено записей: </label>
-                        <label class="form-control" data-bind="text: productsCount()"></label>
+                        <label class="form-control" data-bind="text: sparePartsCount()"></label>
                     </div>
                 </form>
             </div>

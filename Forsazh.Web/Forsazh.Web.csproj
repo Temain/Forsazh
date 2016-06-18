@@ -279,6 +279,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\CrashTypeController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\SparePartController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -332,9 +333,10 @@
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\alert.js" />
+    <Content Include="Scripts\app\sparepart.viewmodel.js" />
     <Content Include="Scripts\app\task.viewmodel.js" />
     <Content Include="Scripts\app\report.viewmodel.js" />
-    <Content Include="Scripts\app\client.viewmodel.js" />
+    <Content Include="Scripts\app\crashtype.viewmodel.js" />
     <Content Include="Scripts\app\employee.viewmodel.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -574,16 +576,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Home\_Employee.cshtml" />
-    <Content Include="Views\Home\_Client.cshtml" />
+    <Content Include="Views\Home\_CrashType.cshtml" />
     <Content Include="Views\Home\_Report.cshtml" />
     <Content Include="Views\Home\_EditEmployee.cshtml" />
     <Content Include="Views\Home\_CreateEmployee.cshtml" />
     <Content Include="Views\Home\_Alert.cshtml" />
-    <Content Include="Views\Home\_EditClient.cshtml" />
-    <Content Include="Views\Home\_CreateClient.cshtml" />
-    <Content Include="Views\Home\_Product.cshtml" />
-    <Content Include="Views\Home\_CreateProduct.cshtml" />
-    <Content Include="Views\Home\_EditProduct.cshtml" />
+    <Content Include="Views\Home\_EditCrashType.cshtml" />
+    <Content Include="Views\Home\_CreateCrashType.cshtml" />
+    <Content Include="Views\Home\_SparePart.cshtml" />
+    <Content Include="Views\Home\_CreateSparePart.cshtml" />
+    <Content Include="Views\Home\_EditSparePart.cshtml" />
     <Content Include="Views\Home\_CreateSale.cshtml" />
     <Content Include="Views\Home\_EditSale.cshtml" />
   </ItemGroup>

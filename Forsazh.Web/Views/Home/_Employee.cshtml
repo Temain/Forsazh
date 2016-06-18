@@ -1,7 +1,7 @@
 ﻿<!-- ko with: employee -->
 <div class="heading">
     <h2>Сотрудники</h2>
-    <a class="create-link" href="/#employee/create"><i class="fa fa-user-plus" aria-hidden="true"></i> Добавить</a>
+    <a class="create-link btn btn-primary btn-circle" href="/#employee/create"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
 </div>
 
 <div class="row">
@@ -21,8 +21,8 @@
                 <td data-bind="text: employeeFullName()"></td>
                 <td class="text-center" data-bind="text: employeeDateStart() != null ? moment(employeeDateStart()).format('DD.MM.YYYY') : ''"></td>
                 <td class="text-center actions">
-                    <a href="#" data-bind="attr : { href: '/#employee/' + employeeId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
-                    <a href="#" data-bind="click: $parent.removeEmployee, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
+                    <a href="#" class="btn btn-default btn-circle" data-bind="attr : { href: '/#employee/' + employeeId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-default btn-circle" data-bind="click: $parent.removeEmployee, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
             </tbody>
@@ -32,7 +32,7 @@
         <div class="row text-center">
             <div class="col-md-6">
                 <form class="form-inline">
-                    <div class="form-group">
+                    <div class="form-group pull-left">
                         <label for="">Показывать записей: </label>
                         <select class="form-control" data-bind="options: pageSizes, value: selectedPageSize, event : { change: pageSizeChanged }"></select>
                     </div>

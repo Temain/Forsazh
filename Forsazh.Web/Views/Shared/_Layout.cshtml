@@ -26,30 +26,30 @@
                     <img class="trenner" src="~/Content/images/trenner.png">
 
                     <div class="list-group">
-                        <a class="list-group-item sale active" href="#" data-bind="click: navigateToSale">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            <div class="list-group-item-text">Продажи</div>
-                        </a>
-                        <img class="trenner" src="~/Content/images/trenner.png">
-                        <a class="list-group-item product" href="#" data-bind="click: navigateToProduct">
-                            <i class="fa fa-barcode" aria-hidden="true"></i>
-                            <div class="list-group-item-text">Товары</div>
-                        </a>
-                        <img class="trenner" src="~/Content/images/trenner.png">
-                        <a class="list-group-item client" href="#" data-bind="click: navigateToClient">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            <div class="list-group-item-text">Покупатели</div>
+                        <a class="list-group-item task active" href="#" data-bind="click: navigateToTask">
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Заявки</div>
                         </a>
                         <img class="trenner" src="~/Content/images/trenner.png">
                         <a class="list-group-item employee" href="#" data-bind="click: navigateToEmployee">
-                            <i class="fa fa-sitemap" aria-hidden="true"></i>
+                            <i class="fa fa-user" aria-hidden="true"></i>
                             <div class="list-group-item-text">Сотрудники</div>
                         </a>
                         <img class="trenner" src="~/Content/images/trenner.png">
-                        <a class="list-group-item report" href="#" data-bind="click: navigateToReport">
-                            <i class="fa fa-line-chart" aria-hidden="true"></i>
-                            <div class="list-group-item-text">Отчёты</div>
+                        <a class="list-group-item crashType" href="#" data-bind="click: navigateToCrashType">
+                            <i class="fa fa-gear" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Поломки</div>
                         </a>
+                        <img class="trenner" src="~/Content/images/trenner.png">
+                        <a class="list-group-item sparePart" href="#" data-bind="click: navigateToSparePart">
+                            <i class="fa fa-archive" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Склад</div>
+                        </a>
+                        @*<img class="trenner" src="~/Content/images/trenner.png">
+                        <a class="list-group-item report" href="#" data-bind="click: navigateToReport">
+                            <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                            <div class="list-group-item-text">Отчёты</div>
+                        </a>*@
 
                         @if (Request.IsAuthenticated)
                         {
@@ -85,23 +85,6 @@
                     <div class="main-tab">
                         @RenderBody()
                         @RenderSection("SPAViews", required: false)
-
-                        @*<!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Продажи <span class="badge">14</span></a>
-                            </li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                <div class="tab-content-wrapper">
-                                    @RenderBody()
-                                    @RenderSection("SPAViews", required: false)
-                                </div>
-                            </div>
-                        </div>*@
                     </div>
                 </div>
             </div>

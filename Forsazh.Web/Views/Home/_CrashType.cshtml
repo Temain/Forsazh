@@ -1,7 +1,7 @@
-﻿<!-- ko with: client -->
+﻿<!-- ko with: crashType -->
 <div class="heading">
-    <h2>Покупатели</h2>
-    <a class="create-link" href="/#client/create"><i class="fa fa-user-plus" aria-hidden="true"></i> Добавить</a>
+    <h2>Поломки</h2>
+    <a class="create-link btn btn-primary btn-circle" href="/#crashType/create"><i class="fa fa-plus" aria-hidden="true"></i></a>
 </div>
 <div class="row">
     <section class="col-md-24">
@@ -9,19 +9,19 @@
             <thead>
             <tr>
                 <th class="text-center">№</th>
-                <th>ФИО</th>
-                <th class="text-center">Телефон</th>
+                <th>Наименование поломки</th>
+                <th class="text-center">Стоимость устранения</th>
                 <th class="text-center">Действия</th>
             </tr>
             </thead>
             <tbody data-bind="foreach: list">
             <tr>
                 <td class="text-center" data-bind="text: ((($parent.selectedPage() - 1) * $parent.selectedPageSize()) + $index() + 1)"></td>
-                <td data-bind="text: clientFullName()"></td>
-                <td class="text-center" data-bind="text: phone"></td>
+                <td data-bind="text: crashTypeName()"></td>
+                <td class="text-center" data-bind="text: repairCost()"></td>
                 <td class="text-center actions">
-                    <a href="#" data-bind="attr : { href: '/#client/' + clientId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
-                    <a href="#" data-bind="click: $parent.removeClient, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
+                    <a href="#" class="btn btn-default btn-circle" data-bind="attr : { href: '/#crashType/' + crashTypeId() }, tooltip: { title: 'Перейти к редактированию', placement: 'left', trigger: 'hover' }"><i class="fa fa-pencil"></i></a>
+                    <a href="#" class="btn btn-default btn-circle" data-bind="click: $parent.removeCrashType, tooltip: { title: 'Удалить', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-times"></i></a>
                 </td>
             </tr>
             </tbody>
@@ -31,7 +31,7 @@
         <div class="row text-center">
             <div class="col-md-6">
                 <form class="form-inline">
-                    <div class="form-group">
+                    <div class="form-group pull-left">
                         <label for="">Показывать записей: </label>
                         <select class="form-control" data-bind="options: pageSizes, value: selectedPageSize, event : { change: pageSizeChanged }"></select>
                     </div>
@@ -67,7 +67,7 @@
                 <form class="form-inline">
                     <div class="form-group pull-right">
                         <label for="">Найдено записей: </label>
-                        <label class="form-control" data-bind="text: clientsCount()"></label>
+                        <label class="form-control" data-bind="text: crashTypesCount()"></label>
                     </div>
                 </form>
             </div>

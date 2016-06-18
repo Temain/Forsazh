@@ -72,7 +72,7 @@ namespace SaleOfDetails.Web.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
 
-            // CreateUser();
+            CreateUser();
 
             return View();
         }
@@ -86,12 +86,12 @@ namespace SaleOfDetails.Web.Controllers
 
             var user = new ApplicationUser
             {
-                UserName = "admin@kubsau.ru",
-                Email = "admin@kubsau.ru",
+                UserName = "andreyanov@mail.ru",
+                Email = "andreyanov@mail.ru",
                 Person = new Person
                 {
-                    LastName = "Волошин",
-                    FirstName = "Владимир",
+                    LastName = "Андреянов",
+                    FirstName = "М.",
                     CreatedAt = DateTime.Now
                 }
             };
@@ -105,19 +105,19 @@ namespace SaleOfDetails.Web.Controllers
                 }
             }
 
-            if (!RoleManager.RoleExists("Dispatcher"))
+            if (!RoleManager.RoleExists("User"))
             {
-                RoleManager.Create(new ApplicationRole { Name = "Dispatcher" });
+                RoleManager.Create(new ApplicationRole { Name = "User" });
             }
 
-            user = new ApplicationUser { UserName = "user@kubsau.ru", Email = "user@kubsau.ru" };
-            if (UserManager.FindByName("user@kubsau.ru") == null)
+            user = new ApplicationUser { UserName = "user@kubsau.ru", Email = "user@mail.ru" };
+            if (UserManager.FindByName("user@mail.ru") == null)
             {
                 var result = UserManager.Create(user, "1973648205_qQ");
 
                 if (result.Succeeded)
                 {
-                    UserManager.AddToRole(user.Id, "Dispatcher");
+                    UserManager.AddToRole(user.Id, "User");
                 }
             }
         }

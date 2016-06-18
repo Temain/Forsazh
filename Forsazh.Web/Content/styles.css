@@ -7634,3 +7634,6 @@ h6 {
   width: 200px;
   float: right;
 }
+.form-horizontal {
+  padding-bottom: 200px;
+}

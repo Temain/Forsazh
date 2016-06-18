@@ -1,17 +1,17 @@
-﻿var ClientViewModel = function (app, dataModel) {
+﻿var SparePartViewModel = function (app, dataModel) {
     var self = this;
 
     self.list = ko.observableArray([]);
     self.selectedPage = ko.observable(1);
     self.pageSizes = ko.observableArray([10, 25, 50, 100, 200]);
     self.selectedPageSize = ko.observable(10);
-    self.clientsCount = ko.observable();
+    self.sparePartsCount = ko.observable();
     self.pagesCount = ko.observable();
 
     self.selectedPageChanged = function (page) {
         if (page > 0 && page <= self.pagesCount()) {
             self.selectedPage(page);
-            self.loadClients();
+            self.loadSpareParts();
 
             window.scrollTo(0, 0); 
         }
@@ -19,23 +19,23 @@
 
     self.pageSizeChanged = function () {
         self.selectedPage(1);
-        self.loadClients();
+        self.loadSpareParts();
 
         window.scrollTo(0, 0);
     };
 
     Sammy(function () {
-        this.get('#client', function () {
-            app.markLinkAsActive('client');
+        this.get('#sparePart', function () {
+            app.markLinkAsActive('sparePart');
 
-            self.loadClients();
+            self.loadSpareParts();
         });
     });
 
-    self.loadClients = function () {
+    self.loadSpareParts = function () {
         $.ajax({
             method: 'get',
-            url: '/api/Client',
+            url: '/api/SparePart',
             data: { page: self.selectedPage(), pageSize: self.selectedPageSize() },
             contentType: "application/json; charset=utf-8",
             headers: {
@@ -44,24 +44,24 @@
             success: function (response) {
                 ko.mapping.fromJS(response.items, {}, self.list);
                 self.pagesCount(response.pagesCount);
-                self.clientsCount(response.itemsCount);
+                self.sparePartsCount(response.itemsCount);
                 app.view(self);
             }
         });
     }
 
-    self.removeClient = function (client) {
+    self.removeSparePart = function (sparePart) {
         $.ajax({
             method: 'delete',
-            url: '/api/Client/' + client.clientId(),
+            url: '/api/SparePart/' + sparePart.sparePartId(),
             data: JSON.stringify(ko.toJS(self)),
             contentType: "application/json; charset=utf-8",
             headers: {
                 'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
             },
             success: function (response) {
-                self.list.remove(client);
-                showAlert('success', 'Клиент успешно удалён.');
+                self.list.remove(sparePart);
+                showAlert('success', 'Запись успешно удалена.');
             }
         });
     }
@@ -69,23 +69,17 @@
     return self;
 }
 
-var EditClientViewModel = function (app, dataModel) {
+var EditSparePartViewModel = function (app, dataModel) {
     var self = this;
 
-    self.lastName = ko.observable().extend({
+    self.sparePartName = ko.observable().extend({
         required: {
             params: true,
-            message: "Необходимо указать фамилию."
-        }
-    });
-    self.firstName = ko.observable().extend({
-        required: {
-            params: true,
-            message: "Необходимо указать имя."
+            message: "Необходимо указать наименование."
         }
     });
 
-    self.save = function () {
+    self.save = function() {
         var result = ko.validation.group(self, { deep: true });
         if (!self.isValid()) {
             result.showAllMessages(true);
@@ -95,30 +89,30 @@ var EditClientViewModel = function (app, dataModel) {
 
         $.ajax({
             method: 'put',
-            url: '/api/Client/',
+            url: '/api/SparePart/',
             data: JSON.stringify(ko.toJS(self)),
             contentType: "application/json; charset=utf-8",
             headers: {
                 'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
             },
-            success: function (response) {
-                app.navigateToClient();
+            success: function(response) {
+                app.navigateToSparePart();
                 showAlert('success', 'Изменения успешно сохранены.');
             }
         });
     }
 
     Sammy(function () {
-        this.get('#client/:id', function () {
-            app.markLinkAsActive('client');
+        this.get('#sparePart/:id', function () {
+            app.markLinkAsActive('sparePart');
 
             var id = this.params['id'];
             if (id === 'create') {
-                app.view(app.Views.CreateClient);
+                app.view(app.Views.CreateSparePart);
             } else {
                 $.ajax({
                     method: 'get',
-                    url: '/api/Client/' + id,
+                    url: '/api/SparePart/' + id,
                     contentType: "application/json; charset=utf-8",
                     headers: {
                         'Authorization': 'Bearer ' + app.dataModel.getAccessToken()
@@ -133,23 +127,17 @@ var EditClientViewModel = function (app, dataModel) {
     });
 }
 
-var CreateClientViewModel = function (app, dataModel) {
+var CreateSparePartViewModel = function (app, dataModel) {
     var self = this;
 
-    self.lastName = ko.observable().extend({
+    self.sparePartName = ko.observable().extend({
         required: {
             params: true,
-            message: "Необходимо указать фамилию."
+            message: "Необходимо указать наименование."
         }
     });
-    self.firstName = ko.observable().extend({
-        required: {
-            params: true,
-            message: "Необходимо указать имя."
-        }
-    });
-    self.middleName = ko.observable();
-    self.phone = ko.observable();
+    self.cost = ko.observable();
+    self.inStock = ko.observable();
 
     self.save = function () {
         var result = ko.validation.group(self, { deep: true });
@@ -161,7 +149,7 @@ var CreateClientViewModel = function (app, dataModel) {
 
         $.ajax({
             method: 'post',
-            url: '/api/Client/',
+            url: '/api/SparePart/',
             data: JSON.stringify(ko.toJS(self)),
             contentType: "application/json; charset=utf-8",
             headers: {
@@ -171,34 +159,32 @@ var CreateClientViewModel = function (app, dataModel) {
                 // showAlert('danger', 'Произошла ошибка при добавлении сотрудника. Обратитесь в службу технической поддержки.');
             },
             success: function (response) {
-                self.lastName('');
-                self.firstName('');
-                self.middleName('');
-                self.phone('');
+                self.sparePartName('');
+                self.cost();
 
                 result.showAllMessages(false);
 
-                app.navigateToClient();
-                showAlert('success', 'Клиент успешно добавлен.');
+                app.navigateToSparePart();
+                showAlert('success', 'Запись успешно добавлена.');
             }
         });
     }
 }
  
 app.addViewModel({
-    name: "Client",
-    bindingMemberName: "client",
-    factory: ClientViewModel
+    name: "SparePart",
+    bindingMemberName: "sparePart",
+    factory: SparePartViewModel
 });
 
 app.addViewModel({
-    name: "EditClient",
-    bindingMemberName: "editClient",
-    factory: EditClientViewModel
+    name: "EditSparePart",
+    bindingMemberName: "editSparePart",
+    factory: EditSparePartViewModel
 });
 
 app.addViewModel({
-    name: "CreateClient",
-    bindingMemberName: "createClient",
-    factory: CreateClientViewModel
+    name: "CreateSparePart",
+    bindingMemberName: "createSparePart",
+    factory: CreateSparePartViewModel
 });

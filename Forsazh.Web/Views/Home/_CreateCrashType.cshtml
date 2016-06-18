@@ -1,0 +1,32 @@
+﻿<!-- ko with: createCrashType -->
+<div class="heading">
+    @*<a href="#" class="back-link" data-bind="click: $root.navigateToCrashType, tooltip: { title: 'Вернуться назад', placement: 'bottom', trigger: 'hover' }"><i class="fa fa-arrow-circle-left"></i></a>*@
+    <div class="col-md-offset-2">
+        <h2>Добавление поломки</h2>
+    </div>
+</div>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="crashTypeName" class="col-sm-4 control-label">Наименование</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="crashTypeName" data-bind="value: crashTypeName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="repairCost" class="col-sm-4 control-label">Общая стоимость</label>
+        <div class="col-sm-10">
+            <div class='input-group'>
+                <input type='text' id='repairCost' class="form-control" data-bind="numeric : {}, value: repairCost" />
+                <span class="input-group-addon">
+                    <i class="" aria-hidden="true">руб.</i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-10">
+            <button type="submit" class="btn btn-primary" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Сохранить</button>
+        </div>
+    </div>
+</form>
+<!-- /ko -->
