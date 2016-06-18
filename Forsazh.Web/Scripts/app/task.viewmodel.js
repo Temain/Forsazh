@@ -103,7 +103,26 @@ var EditTaskViewModel = function(app, dataModel) {
     self.comment = ko.observable();
     self.createdAt = ko.observable(moment());
     self.totalCost = ko.computed(function () {
-        return 0; //self.numberOfProducts() * self.productCost();
+        var total = 0;
+
+        var selectedSpareParts = $.grep(self.spareParts(),
+            function (e) {
+                return $.inArray(e.sparePartId(), self.sparePartIds()) != -1;
+            });
+
+        for (var i = 0; i < selectedSpareParts.length; i++) {
+            total += selectedSpareParts[i].cost() << 0;
+        }
+
+        var selectedCrashType = $.grep(self.crashTypes(),
+            function (e) {
+                return e.crashTypeId() == self.crashTypeId();
+            });
+        if (selectedCrashType.length) {
+            total += selectedCrashType[0].repairCost() << 0;
+        }
+
+        return total;
     }, this);
 
 
@@ -219,7 +238,26 @@ var CreateTaskViewModel = function (app, dataModel) {
     self.createdAt = ko.observable(moment());
 
     self.totalCost = ko.computed(function () {
-        return 0// self.numberOfProducts() * self.productCost();
+        var total = 0;
+
+        var selectedSpareParts = $.grep(self.spareParts(),
+            function(e) {
+                return $.inArray(e.sparePartId(), self.sparePartIds()) != -1;
+            });
+        
+        for (var i = 0; i < selectedSpareParts.length; i++) {
+            total += selectedSpareParts[i].cost() << 0;
+        }
+
+        var selectedCrashType = $.grep(self.crashTypes(),
+            function (e) {
+                return e.crashTypeId() == self.crashTypeId();
+            });
+        if (selectedCrashType.length) {
+            total += selectedCrashType[0].repairCost() << 0;
+        }
+
+        return total;
     }, this);
 
     self.save = function () {
