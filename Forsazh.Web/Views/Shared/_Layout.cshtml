@@ -20,7 +20,7 @@
                         </header>*@
 
                     <div class="user-img">
-                        <img src="@Url.Content("~/Content/images/user.png")" class="circle">
+                        <a href="#" data-bind="click: navigateToProfile"><img src="@Url.Content("~/Content/images/user.png")" class="circle"></a>
                     </div>
 
                     <img class="trenner" src="~/Content/images/trenner.png">
@@ -70,7 +70,7 @@
                 <div class="main">
                     <nav class="nav-top">
                         <div class="left-part">
-                            <button type="button" class="btn back btn-primary btn-circle"><i class="glyphicon glyphicon-repeat mirror"></i></button>
+                            <button type="button" class="btn back btn-primary btn-circle" data-bind="click: backlink"><i class="glyphicon glyphicon-repeat mirror"></i></button>
                             <ol class="breadcrumb">
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">Library</a></li>

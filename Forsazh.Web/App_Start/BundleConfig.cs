@@ -31,6 +31,7 @@ namespace SaleOfDetails.Web
                 "~/Scripts/app/employee.viewmodel.js",
                 "~/Scripts/app/crashtype.viewmodel.js",
                 "~/Scripts/app/sparepart.viewmodel.js",
+                "~/Scripts/app/profile.viewmodel.js",
                 "~/Scripts/app/report.viewmodel.js",
                 "~/Scripts/app/_run.js",
                 "~/Scripts/bootstrap-datetimepicker.js",

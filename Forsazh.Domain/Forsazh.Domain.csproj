@@ -75,6 +75,14 @@
     <Compile Include="Migrations\201606180216592_AddFieldsToCrashType.Designer.cs">
       <DependentUpon>201606180216592_AddFieldsToCrashType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606181626435_AddStatusToTask.cs" />
+    <Compile Include="Migrations\201606181626435_AddStatusToTask.Designer.cs">
+      <DependentUpon>201606181626435_AddStatusToTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606181628017_AddNullableStatusToTask.cs" />
+    <Compile Include="Migrations\201606181628017_AddNullableStatusToTask.Designer.cs">
+      <DependentUpon>201606181628017_AddNullableStatusToTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CrashType.cs" />
     <Compile Include="Models\SparePart.cs" />
@@ -94,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606180216592_AddFieldsToCrashType.resx">
       <DependentUpon>201606180216592_AddFieldsToCrashType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181626435_AddStatusToTask.resx">
+      <DependentUpon>201606181626435_AddStatusToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181628017_AddNullableStatusToTask.resx">
+      <DependentUpon>201606181628017_AddNullableStatusToTask.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -28,6 +28,7 @@
     Sammy(function () {
         this.get('#task', function () {
             app.markLinkAsActive('task');
+            app.breadcrumb(['Заявки']);
 
             self.loadTasks();
         });
@@ -144,9 +145,12 @@ var EditTaskViewModel = function(app, dataModel) {
     Sammy(function () {
         this.get('#task/:id', function () {
             app.markLinkAsActive('task');
+            app.returnUrl = '#task';
 
             var id = this.params['id'];
             if (id === 'create') {
+                app.breadcrumb(['Заявки', 'Новая']);
+
                 $.ajax({
                     method: 'get',
                     url: '/api/Task/0',
@@ -161,6 +165,8 @@ var EditTaskViewModel = function(app, dataModel) {
                     }
                 });
             } else {
+                app.breadcrumb(['Заявки', 'Редактирование']);
+
                 $.ajax({
                     method: 'get',
                     url: '/api/Task/' + id,

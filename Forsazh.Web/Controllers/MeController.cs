@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -24,21 +28,38 @@ namespace SaleOfDetails.Web.Controllers
         {
         }
 
-        //public MeController(ApplicationUserManager userManager)
-        //{
-        //    UserManager = userManager;
-        //}
-
         // GET api/Me
-        public GetViewModel Get()
+        public MeViewModel Get()
         {
-            //var hometown = UserProfile.Hometown;
             var user = UserManager.FindById(User.Identity.GetUserId());
-            var employee = UnitOfWork.Repository<Person>()
-                .Get()
-                .FirstOrDefault();
+            var viewModel = Mapper.Map<ApplicationUser, MeViewModel>(user);
 
-            return new GetViewModel() { LastName = employee.LastName };
+            return viewModel;
+        }
+
+        // PUT: api/Employee/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutUser(MeViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user == null)
+            {
+                return BadRequest();
+            }
+
+            // Mapper.Map<MeViewModel, ApplicationUser>(viewModel, user);
+            user.Person.LastName = viewModel.LastName;
+            user.Person.FirstName = viewModel.FirstName;
+            user.Person.MiddleName = viewModel.MiddleName;
+            user.Person.Birthday = viewModel.Birthday;
+            UserManager.Update(user);
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

@@ -27,6 +27,7 @@
     Sammy(function () {
         this.get('#crashType', function () {
             app.markLinkAsActive('crashType');
+            app.breadcrumb(['Поломки']);
 
             self.loadCrashTypes();
         });
@@ -105,11 +106,14 @@ var EditCrashTypeViewModel = function (app, dataModel) {
     Sammy(function () {
         this.get('#crashType/:id', function () {
             app.markLinkAsActive('crashType');
+            app.returnUrl = '#crashType';
 
             var id = this.params['id'];
             if (id === 'create') {
+                app.breadcrumb(['Поломки', 'Новая']);
                 app.view(app.Views.CreateCrashType);
             } else {
+                app.breadcrumb(['Поломки', 'Редактирование']);
                 $.ajax({
                     method: 'get',
                     url: '/api/CrashType/' + id,

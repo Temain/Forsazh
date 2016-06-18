@@ -27,6 +27,7 @@
     Sammy(function () {
         this.get('#employee', function () {
             app.markLinkAsActive('employee');
+            app.breadcrumb(['Сотрудники']);
 
             self.loadEmployees();
         });
@@ -111,11 +112,14 @@ var EditEmployeeViewModel = function(app, dataModel) {
     Sammy(function () {
         this.get('#employee/:id', function () {
             app.markLinkAsActive('employee');
+            app.returnUrl = '#employee';
 
             var id = this.params['id'];
             if (id === 'create') {
+                app.breadcrumb(['Сотрудники', 'Новый']);
                 app.view(app.Views.CreateEmployee);
             } else {
+                app.breadcrumb(['Сотрудники', 'Редактирование']);
                 $.ajax({
                     method: 'get',
                     url: '/api/Employee/' + id,

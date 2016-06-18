@@ -35,7 +35,7 @@
                     <td data-bind="text: carNumber()"></td>
                     <td data-bind="text: crashTypeName()"></td>
                     <td data-bind="text: sparePartNames()"></td>
-                    <td class="text-center" data-bind="text: totalCostView()"></td>
+                    <td class="text-center" data-bind="text: totalCostView() + ' руб.'"></td>
                     <td class="text-center" data-bind="text: createdAt() != null ? moment(createdAt()).format('DD.MM.YYYY') : ''"></td>
                     <td class="text-center" data-bind="text: comment()"></td>
                     <td class="text-center actions">

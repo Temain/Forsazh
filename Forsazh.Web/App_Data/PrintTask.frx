@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="06/18/2016 16:56:47" ReportInfo.Modified="06/18/2016 17:51:11" ReportInfo.CreatorVersion="2015.1.4.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/18/2016 16:56:47" ReportInfo.Modified="06/18/2016 20:05:01" ReportInfo.CreatorVersion="2015.1.4.0">
   <Dictionary/>
   <ReportPage Name="Page1">
     <PageHeaderBand Name="PageHeader1" Width="718.2"/>
@@ -20,7 +20,7 @@
     <PageFooterBand Name="PageFooter1" Top="375.45" Width="718.2" Height="47.25">
       <TextObject Name="Text9" Left="538.65" Top="9.45" Width="132.3" Height="18.9" Border.Lines="Bottom" HorzAlign="Center" Font="Times New Roman, 12pt"/>
       <TextObject Name="Text10" Left="406.35" Top="9.45" Width="132.3" Height="18.9" Text="Подпись клиента" HorzAlign="Center" Font="Times New Roman, 12pt"/>
-      <TextObject Name="Text13" Left="28.35" Top="9.45" Width="160.65" Height="18.9" Text="[Table.CreatedAt]" Font="Times New Roman, 12pt"/>
+      <TextObject Name="Text13" Left="28.35" Top="9.45" Width="160.65" Height="18.9" Text="[FormatDateTime([Table.CreatedAt],&quot;dd.MM.yyyy&quot;)]" Font="Times New Roman, 12pt"/>
     </PageFooterBand>
   </ReportPage>
 </Report>

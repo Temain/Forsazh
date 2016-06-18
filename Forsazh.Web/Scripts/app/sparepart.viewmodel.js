@@ -27,6 +27,7 @@
     Sammy(function () {
         this.get('#sparePart', function () {
             app.markLinkAsActive('sparePart');
+            app.breadcrumb(['Склад']);
 
             self.loadSpareParts();
         });
@@ -105,11 +106,14 @@ var EditSparePartViewModel = function (app, dataModel) {
     Sammy(function () {
         this.get('#sparePart/:id', function () {
             app.markLinkAsActive('sparePart');
+            app.returnUrl = '#sparePart';
 
             var id = this.params['id'];
             if (id === 'create') {
+                app.breadcrumb(['Склад', 'Добавление']);
                 app.view(app.Views.CreateSparePart);
             } else {
+                app.breadcrumb(['Склад', 'Редактирование']);
                 $.ajax({
                     method: 'get',
                     url: '/api/SparePart/' + id,

@@ -181,33 +181,68 @@ namespace SaleOfDetails.Web.Controllers
         [Route("api/Task/ChartData/{year}")]
         public IHttpActionResult ChartData(int year)
         {
-            //var tasks = UnitOfWork.Repository<Task>()
-            //    .GetQ(filter: x => x.TaskDate.HasValue && x.TaskDate.Value.Year == year,
-            //        includeProperties: "Product, Employee, Employee.Person, Client, Client.Person");
-            //var data = tasks
-            //    .GroupBy(g => g.TaskDate.Value.Month)
-            //    .Select(x => new
-            //    {
-            //        Month = x.Key,
-            //        Amount = x.Sum(s => s.NumberOfProducts*s.Product.Cost)
-            //    });
-            //    //.OrderBy(x => x.Month)
-            //    //.Select(x => x.Amount);
+            var result = new List<ChartDataViewModel>();
 
-            //var months = Enumerable.Range(0, 11);
-            //var response = months.GroupJoin(data,
-            //    m => m,
-            //    d => d.Month,
-            //    (m, g) => g
-            //        .Select(r => new KeyValuePair<int, decimal>(m, r.Amount))
-            //        .DefaultIfEmpty(new KeyValuePair<int, decimal>(m, 0))
-            //    )
-            //    .SelectMany(g => g)
-            //    .Select(x => x.Value);
+            // Выполненные в текущем году
+            var tasks = UnitOfWork.Repository<Task>()
+                .GetQ(filter: x => x.CreatedAt.HasValue && x.CreatedAt.Value.Year == year,
+                    includeProperties: "CrashType, Employee, Employee.Person, SpareParts");
+            var data = tasks
+                .GroupBy(g => g.CreatedAt.Value.Month)
+                .Select(x => new
+                {
+                    Month = x.Key,
+                    Count = x.Count()
+                });
 
-            //return Ok(response);
+            var months = Enumerable.Range(1, 12);
+            var currentYear = months.GroupJoin(data,
+                m => m,
+                d => d.Month,
+                (m, g) => g
+                    .Select(r => new KeyValuePair<int, int>(m, r.Count))
+                    .DefaultIfEmpty(new KeyValuePair<int, int>(m, 0))
+                )
+                .SelectMany(g => g)
+                .Select(x => x.Value);
+            var currentYearData = new ChartDataViewModel
+            {
+                name = year + "г.",
+                data = currentYear
+            };
+            
+            // Выполненные в прошлом году
+            tasks = UnitOfWork.Repository<Task>()
+                .GetQ(filter: x => x.CreatedAt.HasValue && x.CreatedAt.Value.Year == year - 1,
+                    includeProperties: "CrashType, Employee, Employee.Person, SpareParts");
+            data = tasks
+                .GroupBy(g => g.CreatedAt.Value.Month)
+                .Select(x => new
+                {
+                    Month = x.Key,
+                    Count = x.Count()
+                });
 
-            return NotFound();
+            months = Enumerable.Range(1, 12);
+            var previousYear = months.GroupJoin(data,
+                m => m,
+                d => d.Month,
+                (m, g) => g
+                    .Select(r => new KeyValuePair<int, int>(m, r.Count))
+                    .DefaultIfEmpty(new KeyValuePair<int, int>(m, 0))
+                )
+                .SelectMany(g => g)
+                .Select(x => x.Value);
+            var previousYearData = new ChartDataViewModel
+            {
+                name = (year - 1) + "г.",
+                data = previousYear
+            };
+
+            result.Add(previousYearData);
+            result.Add(currentYearData);
+
+            return Ok(result);          
         }
 
         private bool TaskExists(int id)

@@ -44,6 +44,11 @@ namespace SaleOfDetails.Domain.Models
         public Employee Employee { get; set; }
 
         /// <summary>
+        /// Статус заявки
+        /// </summary>
+        public Status? Status { get; set; }
+
+        /// <summary>
         /// Комментарий
         /// </summary>
         public string Comment { get; set; }
@@ -67,5 +72,12 @@ namespace SaleOfDetails.Domain.Models
         public DateTime? DeletedAt { get; set; }
 
         public ICollection<SparePart> SpareParts { get; set; }
+    }
+
+    public enum Status
+    {
+        InJob,
+        Completed,
+        Failure
     }
 }
