@@ -323,6 +323,7 @@
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\trenner.png" />
     <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\user2.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\styles.css">
       <DependentUpon>styles.less</DependentUpon>
